@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import {
-  ArrowUp, ChevronDown, ChevronUp, FileText, FileCode2, Braces, File, Music, Video,
+  ArrowUp, ChevronDown, ChevronUp, FileText, FileCode2, Braces, File, Music, Video, Camera,
   GitCompare, LineChart, Wrench, Code2, Lightbulb, PenLine, Languages,
   Mic, Paperclip, Plus, Sparkles, Square, X,
 } from 'lucide-react';
@@ -146,7 +146,7 @@ export function ChatInput({
                     <button
                       key={s.label}
                       onClick={() => handleSuggestionClick(s.prompt)}
-                      className="flex shrink-0 items-center gap-1.5 rounded-full border border-border bg-surface px-3.5 py-2 text-xs font-medium text-text transition-all hover:border-accent hover:bg-surface-2 active:scale-95"
+                      className="radiant-chip flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-medium text-text transition-all active:scale-95"
                     >
                       <Icon size={13} className="text-accent" />
                       {s.label}
@@ -173,7 +173,11 @@ export function ChatInput({
 
       {/* Input dock */}
       <div className="px-3 pb-2 safe-bottom">
-        <div className="rounded-3xl border border-border bg-surface shadow-lg-theme transition-colors focus-within:border-accent">
+        <div
+          className={`rounded-3xl border border-border bg-surface shadow-lg-theme transition-colors focus-within:border-accent ${
+            showSuggestions && !suggestionsOpen ? 'radiant-input-glow' : ''
+          }`}
+        >
           {/* File preview chips */}
           {pendingFiles.length > 0 && (
             <div className="flex flex-wrap gap-2 px-3 pt-3">
@@ -195,7 +199,7 @@ export function ChatInput({
                       <img src={f.dataUrl} alt={f.name} className="h-8 w-8 shrink-0 rounded-lg object-cover" />
                     ) : isAudio ? (
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent/15">
-                        <Music size={14} className="text-accent" />
+                        <Mic size={14} className="text-accent" />
                       </div>
                     ) : isVideo ? (
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent/15">

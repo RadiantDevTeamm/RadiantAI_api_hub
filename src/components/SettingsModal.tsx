@@ -1,6 +1,7 @@
 import { Check, Moon, Sun, Coffee, Grid3x3, X, KeyRound, Plus } from 'lucide-react';
 import { useTheme } from '@/hooks/useTheme';
 import { useSavedModels } from '@/hooks/useSavedModels';
+import { RadiantLogo } from '@/components/RadiantLogo';
 import { THEMES, type ThemeId } from '@/types/theme';
 
 interface SettingsModalProps {
@@ -128,15 +129,9 @@ export function SettingsModal({ open, onClose, onAddKey }: SettingsModalProps) {
 
           {/* About */}
           <div className="rounded-2xl border border-border bg-bg p-3">
-            <div className="flex items-center gap-2">
-              <svg viewBox="0 0 32 32" className="h-7 w-7" fill="none">
-                <path d="M16 2 L29 28 H3 Z" fill="var(--c-accent)" />
-                <circle cx="16" cy="20" r="4" fill="var(--c-bg)" />
-              </svg>
-              <div>
-                <div className="text-sm font-semibold">Radiant</div>
-                <div className="text-[11px] text-muted">by Aetheris AI · v1.0</div>
-              </div>
+            <div className="flex items-center justify-between gap-2">
+              <RadiantLogo size="sm" />
+              <span className="text-[11px] text-muted">v1.0</span>
             </div>
           </div>
         </div>

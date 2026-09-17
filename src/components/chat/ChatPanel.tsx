@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ArrowDown, Sparkles } from 'lucide-react';
+import { RadiantLogo } from '@/components/RadiantLogo';
 import { ChatInput } from './ChatInput';
 import { MessageBubble, type Message, type MessageAttachment } from './MessageBubble';
 import { ModelSheet } from './ModelSheet';
@@ -174,31 +175,13 @@ export function ChatPanel() {
   }, [isStreaming]);
 
   return (
-    <div className="relative flex h-full flex-col">
+    <div className="radiant-screen relative flex h-full flex-col">
       {/* Messages area */}
       <div ref={scrollRef} onScroll={onScroll} className="scroll-thin relative flex-1 overflow-y-auto">
         {messages.length === 0 ? (
           <div className="flex min-h-full flex-col items-center justify-center px-4">
             <div className="mb-6 flex flex-col items-center">
-              <div className="mb-4 flex h-16 w-16 items-center justify-center">
-                <svg viewBox="0 0 32 32" className="h-16 w-16" fill="none">
-                  <defs>
-                    <linearGradient id="logo-grad-main" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="var(--c-accent)" />
-                      <stop offset="100%" stopColor="var(--c-text)" />
-                    </linearGradient>
-                  </defs>
-                  <path
-                    d="M16 2 L29 28 H3 Z"
-                    fill="url(#logo-grad-main)"
-                    stroke="var(--c-border)"
-                    strokeWidth="0.5"
-                  />
-                  <circle cx="16" cy="20" r="4" fill="var(--c-bg)" />
-                </svg>
-              </div>
-              <h1 className="font-display text-2xl font-semibold tracking-tight">Radiant</h1>
-              <p className="mt-0.5 text-xs text-muted">by Aetheris AI</p>
+              <RadiantLogo size="lg" />
             </div>
           </div>
         ) : (

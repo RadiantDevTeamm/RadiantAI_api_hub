@@ -1,8 +1,9 @@
 import { memo, useState } from 'react';
-import { AlertTriangle, Check, Copy, FileText, FileCode2, Braces, File, Music, Video, Paperclip, User, X } from 'lucide-react';
+import { AlertTriangle, Check, Copy, FileText, FileCode2, Braces, File, Music, Video, Camera, Mic, Paperclip, User, X } from 'lucide-react';
 import { Markdown } from './Markdown';
 import { useSavedModels } from '@/hooks/useSavedModels';
 import { getProvider } from '@/types/models';
+import { RadiantLogo } from '@/components/RadiantLogo';
 import { ProviderIcon } from '@/components/ProviderIcon';
 import { formatFileSize, formatDuration, getFileIconName, type FileKind } from '@/lib/fileParser';
 
@@ -191,7 +192,7 @@ function MessageBubbleInner({ message }: { message: Message }) {
         {savedModel && provider ? (
           <ProviderIcon provider={savedModel.provider} size={13} style={{ color: provider.color }} />
         ) : (
-          <span className="font-display text-[11px] font-bold">R</span>
+          <RadiantLogo size="sm" showName={false} />
         )}
       </div>
       <div className="min-w-0 flex-1">

@@ -150,6 +150,118 @@ body::before {
 }
 
 /* ============================================================
+   RADIANT BRAND: FRAGMENTED R MARK
+   ============================================================ */
+
+.radiant-mark {
+  filter: saturate(1.1) contrast(1.05);
+  opacity: 0.92;
+  transition: opacity 0.4s var(--ease);
+}
+.radiant-mark:hover { opacity: 1; }
+
+/* Subtle geometric glow behind the mark on dark themes */
+[data-theme='classic-dark'] .radiant-mark,
+[data-theme='nothing'] .radiant-mark {
+  filter: saturate(1.2) contrast(1.1) brightness(1.05);
+  opacity: 0.95;
+}
+
+/* ============================================================
+   SHATTERED GLASS BACKGROUND TEXTURE (dark mode only)
+   ============================================================ */
+
+.radiant-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+  background-image:
+    linear-gradient(105deg, transparent 48%, rgba(32, 128, 142, 0.018) 49%, rgba(32, 128, 142, 0.018) 51%, transparent 52%),
+    linear-gradient(75deg, transparent 30%, rgba(255, 255, 255, 0.012) 31%, rgba(255, 255, 255, 0.012) 33%, transparent 34%),
+    linear-gradient(165deg, transparent 62%, rgba(32, 128, 142, 0.014) 63%, rgba(32, 128, 142, 0.014) 65%, transparent 66%),
+    linear-gradient(195deg, transparent 18%, rgba(255, 255, 255, 0.008) 19%, rgba(255, 255, 255, 0.008) 21%, transparent 22%),
+    linear-gradient(135deg, transparent 78%, rgba(32, 128, 142, 0.01) 79%, rgba(32, 128, 142, 0.01) 81%, transparent 82%);
+  background-size: 100% 100%;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 90%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 90%);
+}
+
+[data-theme='classic-dark'] .radiant-screen::before,
+[data-theme='nothing'] .radiant-screen::before {
+  opacity: 1;
+}
+
+/* Keep content above the texture */
+.radiant-screen > * { position: relative; z-index: 1; }
+
+/* ============================================================
+   COLLAPSED-INPUT GEOMETRIC GLOW
+   ============================================================ */
+
+@keyframes radiant-glow-shift {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px var(--c-border),
+      0 4px 24px rgba(0, 0, 0, 0.08),
+      0 0 20px 0px var(--c-accent-soft);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px var(--c-accent),
+      0 4px 24px rgba(0, 0, 0, 0.08),
+      0 0 28px 2px var(--c-accent-soft);
+  }
+}
+
+.radiant-input-glow {
+  animation: radiant-glow-shift 3.5s ease-in-out infinite;
+}
+
+/* ============================================================
+   FRAGMENTED CHIP BORDERS
+   ============================================================ */
+
+.radiant-chip {
+  position: relative;
+  border: none;
+  background:
+    linear-gradient(var(--c-surface), var(--c-surface)) padding-box,
+    repeating-linear-gradient(
+      115deg,
+      var(--c-border) 0deg,
+      var(--c-border) 3deg,
+      transparent 3deg,
+      transparent 6deg,
+      var(--c-border) 6deg,
+      var(--c-border) 9deg,
+      transparent 9deg,
+      transparent 14deg
+    ) border-box;
+  border: 1px solid transparent;
+  background-clip: padding-box, border-box;
+}
+.radiant-chip:hover {
+  background:
+    linear-gradient(var(--c-surface-2), var(--c-surface-2)) padding-box,
+    repeating-linear-gradient(
+      115deg,
+      var(--c-accent) 0deg,
+      var(--c-accent) 3deg,
+      transparent 3deg,
+      transparent 6deg,
+      var(--c-accent) 6deg,
+      var(--c-accent) 9deg,
+      transparent 9deg,
+      transparent 14deg
+    ) border-box;
+  background-clip: padding-box, border-box;
+}
+
+/* ============================================================
    SCROLLBAR
    ============================================================ */
 
